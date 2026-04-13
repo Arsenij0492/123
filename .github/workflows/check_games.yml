@@ -2,9 +2,8 @@ name: Check New Games
 
 on:
   schedule:
-    # Запуск каждые 30 минут
     - cron: '*/30 * * * *'
-  workflow_dispatch:  # Чтобы можно было запустить вручную из интерфейса GitHub
+  workflow_dispatch:
 
 jobs:
   check-games:
@@ -20,7 +19,9 @@ jobs:
         python-version: '3.11'
     
     - name: Install dependencies
-      run: pip install -r requirements.txt
+      run: |
+        pip install requests
+        pip install beautifulsoup4
     
     - name: Run bot
       env:
