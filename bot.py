@@ -6,8 +6,8 @@ from database import Database
 from parser import GameParser
 
 # Настройки из переменных окружения (будут в GitHub Secrets)
-BOT_TOKEN = os.getenv('BOT_TOKEN')
-CHAT_ID = os.getenv('CHAT_ID')
+BOT_TOKEN = os.getenv('8743041848:AAGl6YHMA1-ZLiQyfe3r7tvK9IyX-HAn1Qs')
+CHAT_ID = os.getenv('1279775588')
 MONITOR_URL = os.getenv('MONITOR_URL', 'https://stoigr.org/games-2026/')
 
 def send_telegram_message(text, image_url=None):
