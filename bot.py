@@ -52,3 +52,19 @@ else:
     print("❌ Не удалось отправить сообщение")
 
 print(f"[{datetime.now()}] Проверка завершена")
+
+def send_test_message():
+    """Отправляет тестовое сообщение для проверки"""
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    try:
+        response = requests.post(url, data={
+            'chat_id': CHAT_ID,
+            'text': "✅ Бот работает и готов отправлять новые игры!",
+            'parse_mode': 'HTML'
+        }, timeout=10)
+        print(f"Тестовое сообщение отправлено: {response.status_code}")
+    except Exception as e:
+        print(f"Ошибка отправки теста: {e}")
+
+def main():
+    send_test_message()  # Временная проверка
