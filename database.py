@@ -19,6 +19,7 @@ class Database:
         ''')
         conn.commit()
         conn.close()
+        print(f"✅ База данных готова: {self.db_file}")
     
     def is_game_sent(self, url):
         """Проверяет, отправляли ли уже эту игру"""
@@ -34,14 +35,14 @@ class Database:
         conn = sqlite3.connect(self.db_file)
         c = conn.cursor()
         c.execute(
-            "INSERT INTO sent_games (url, title, sent_time) VALUES (?, ?, ?)",
+            "INSERT OR REPLACE INTO sent_games (url, title, sent_time) VALUES (?, ?, ?)",
             (url, title, datetime.now())
         )
         conn.commit()
         conn.close()
     
     def get_stats(self):
-        """Возвращает статистику: сколько игр отправлено"""
+        """Возвращает статистику"""
         conn = sqlite3.connect(self.db_file)
         c = conn.cursor()
         c.execute("SELECT COUNT(*) FROM sent_games")
