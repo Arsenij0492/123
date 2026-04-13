@@ -24,8 +24,4 @@ jobs:
         pip install beautifulsoup4
     
     - name: Run bot
-      env:
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        CHAT_ID: ${{ secrets.CHAT_ID }}
-        MONITOR_URL: ${{ secrets.MONITOR_URL }}
-      run: python bot.py
+      run: python bot.py "${{ secrets.BOT_TOKEN }}" "${{ secrets.CHAT_ID }}" "${{ secrets.MONITOR_URL }}"
